@@ -1,6 +1,9 @@
 body {
     font-family: Verdana, sans-serif;
     background-color: black;
+    background: url('https://static.vecteezy.com/system/resources/previews/036/266/892/non_2x/set-of-social-media-icon-in-doodle-style-isolated-on-black-background-hand-drawn-set-social-media-theme-illustration-vector.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,61 +12,76 @@ body {
 }
 
 .container {
-    background-color: white;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: aliceblue;   
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
+    margin-top: 0;
+    color: #000;
+}
+
+.pencil {
+    display: inline-block;
+    animation: write 1s infinite alternate;
+}
+
+@keyframes write {
+    0% { transform: rotate(-5deg) translateY(-2px); }
+    100% { transform: rotate(5deg) translateY(2px); }
 }
 
 form {
-    display: flex;
-    justify-content: center;
     margin-bottom: 20px;
 }
 
 input[type="text"] {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     margin-right: 10px;
 }
 
 button {
-    padding: 10px;
+    padding: 20px 20px;
     border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
+    border-radius: 600px;
+    background-color: aliceblue;
+    color: #000;
     cursor: pointer;
+    font-size: 24px;
+    line-height: 0;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #ccc;
 }
 
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
 li {
-    background-color: #f9f9f9;
-    padding: 10px;
+    background-color: black;
     margin-bottom: 10px;
-    border-radius: 4px;
+    padding: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 a {
-    color: #d9534f;
+    color: #dc3545;
     text-decoration: none;
 }
 
@@ -71,3 +89,24 @@ a:hover {
     text-decoration: underline;
 }
 
+.container::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.container::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
