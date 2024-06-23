@@ -8,16 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>To-Do List <span>✎</span></h1>
+        <h1>To-Do List <span class="pencil">✎</span></h1>
         <form action="{{ url_for('add_task') }}" method="POST">
             <input type="text" name="task" placeholder="Add a new task" required>
-            <button type="submit">Add</button>
+            <button type="submit">ඞ</button>
         </form>
         <ul>
             {% for task in tasks %}
             <li>
                 {{ task }} 
-                <a href="{{ url_for('remove_task', task_id=loop.index0) }}">Remove</a>
+                <a href="{{ url_for('remove_task', task_id=loop.index0) }}">🗑</a>
             </li>
             {% endfor %}
         </ul>
