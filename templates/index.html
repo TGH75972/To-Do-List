@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>To-Do List <span>✎</span></h1>
-        <form action="{{ url_for('add_task') }}" method="POST">
-            <input type="text" name="task" placeholder="Add a new task" required>
-            <button type="submit">Add</button>
-        </form>
-        <ul>
-            {% for task in tasks %}
-            <li>
-                {{ task }} 
-                <a href="{{ url_for('remove_task', task_id=loop.index0) }}">Remove</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-</body>
-</html>
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+tasks = []
+
+@app.route('/')
+def index():
+    return render_template('index.html', tasks=tasks)
+
+@app.route('/add', methods=['POST'])
+def add_task():
+    task = request.form.get('task')
+    tasks.append(task)
+    return redirect(url_for('index'))
+
+@app.route('/delete/<int:task_id>', methods=['POST'])
+def delete_task(task_id):
+    if 0 <= task_id < len(tasks):
+        tasks.pop(task_id)
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
